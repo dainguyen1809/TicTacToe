@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.board {
+  margin: 50px auto;
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.cell {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cell.is-x {
+  color: #2cccff;
+}
+
+.cell.is-o {
+  color: #ff6651;
+}
+
+.btn-reset {
+  cursor: pointer;
+  margin: 25px auto;
+  display: block;
+  padding: 15px 40px;
+  color: #fff;
+  background-color: #6a5af9;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.winner {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3eda6b;
+}
