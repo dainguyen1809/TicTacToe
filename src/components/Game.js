@@ -3,30 +3,41 @@ import Board from "./Board";
 import { checkWinner } from "../helpers";
 
 export default function Game() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [point, setPoint] = useState(true);
+  // const [board, setBoard] = useState(Array(9).fill(null));
+  // const [point, setPoint] = useState(true);
 
-  const winner = checkWinner(board);
+  const [state, setState] = useState({
+    board: Array(9).fill(null),
+    point: true,
+  });
+
+  const winner = checkWinner(state.board);
 
   const handleClick = (index) => {
-    const boardCopy = [...board];
+    const boardCopy = [...state.board];
 
     // check already winner
     if (winner || boardCopy[index]) return;
-    boardCopy[index] = point ? "x" : "o";
-    setBoard(boardCopy);
-    setPoint((point) => !point);
+    boardCopy[index] = state.point ? "x" : "o";
+    setState({
+      ...state,
+      board: boardCopy,
+      point: !state.point,
+    });
   };
 
   const handleReset = () => {
-    setBoard(Array(9).fill(null));
-    setPoint(true);
+    setState({
+      ...state,
+      board: Array(9).fill(null),
+      point: state.point,
+    });
   };
 
   return (
     <div>
       <div>
-        <Board cells={board} onClick={handleClick}></Board>
+        <Board cells={state.board} onClick={handleClick}></Board>
         {/* 
           onClick là props của Board
         */}
